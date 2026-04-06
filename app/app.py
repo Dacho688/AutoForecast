@@ -28,7 +28,7 @@ file_input = FileInput(accept=".csv",title="Upload Time Series Data as CSV")
 seasonality = NumericInput(value=1,title="Number of periods in season? Enter 1 if no seasonality.", mode='int')
 n_ahead = NumericInput(value=12,title="Number of periods to forecast?", mode='int')
 column_name = TextInput(title="Column name to forecast?")
-forecast = Button(label="Auto Forecast")
+auto_forecast = Button(label="Auto Forecast")
 
 
 def update_status():
@@ -59,7 +59,7 @@ def upload_callback():
     #Update status
     status_msg.text = "<b>STATUS:</b> Complete!"
 
-forecast.on_click(update_status)
+auto_forecast.on_click(update_status)
 
-layout = column(row(title, align='center'),row(column(status_msg,file_input, seasonality, n_ahead, column_name,forecast, table_title, data_table),fig),sizing_mode='stretch_both')
+layout = column(row(title, align='center'),row(column(status_msg,file_input, seasonality, n_ahead, column_name,auto_forecast, table_title, data_table),fig),sizing_mode='stretch_both')
 curdoc().add_root(layout)
